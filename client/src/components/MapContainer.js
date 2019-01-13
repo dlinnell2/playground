@@ -7,10 +7,8 @@ class MapContainer extends Component {
     render(){
         return(
             <div style = {{height: '100vh'}}>
-                <Map id = 'myMap'>
+                <Map>
                     <Marker />
-                    <Marker 
-                    coor = 'test'/>
                 </Map>
             </div>
         )

@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 
-export default class Marker extends Component{
+class Marker extends Component {
 
     componentDidMount() {
-        console.log(this.props)
+        
+
+        let google = this.props.google;
+        let map = this.props.map;
+
+        let marker = new google.maps.Marker({
+            map: map,
+            position: {
+                lat: 29.756846,
+                lng: -95.363444
+            }
+        })
     }
 
-    componentDidUpdate(){
-        console.log(this.props)
+    componentDidUpdate() {
+
     }
 
     render() {
         return null
     }
-
-    /* const mark = new window.google.maps.Marker({
-        position : props.coor,
-        map : props.map
-    }) */
 }
+
+export default Marker;
