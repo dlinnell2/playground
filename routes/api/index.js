@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const dbController = require("../../controllers/dbController")
 
-router.route("/db")
-    .get(dbController.find);
+router.route("/add")
+    .get(dbController.add);
 
 router.route('/hello')
     .get((req, res) => {

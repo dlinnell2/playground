@@ -1,0 +1,23 @@
+on load
+    - display map
+        - pull user location - default to houston if not received within 1.5 seconds
+        - retrieve bounds of displayed map
+        - search for all playgrounds within bounds
+        - return markers for all playgrounds
+        - create info windows showing info on click of markers
+    - on dragend
+        - reset map center and map bounds
+        - do above again
+
+playground info
+    - name
+    - inside/outside
+    - free/paid
+    - items
+        - slides
+        - swings
+            - infant
+        - splashpad
+        - crafts
+        - games
+        - climbing

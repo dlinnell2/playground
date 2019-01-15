@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-    checkDb: () => {
-        return axios.get('api/db')
+    create: () => {
+        return axios.get('/api/add')
     }
 }

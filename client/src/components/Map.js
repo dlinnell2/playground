@@ -28,39 +28,32 @@ class Map extends Component {
     }
   }
 
-  getLocation() {
-
-    return new Promise((resolve, reject) => {
-      if (navigator.geolocation) {
-        console.log('getting location')
-        navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position)
-          this.setState({
-            center: {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            }
-          })
-          resolve();
-        })
-      } 
-    })
-  }
-
   onScriptLoad() {
-    const map = new window.google.maps.Map(
+    let map = new window.google.maps.Map(
       document.getElementById('myMap'),
       {
-        center: this.state.center,
+        center: this.props.center,
         zoom: 13
       });
 
     this.map = map;
     this.google = window.google;
     this.setState({
-      map:true
+      map: true
     })
-    this.getLocation();
+
+    this.google.maps.event.addListener(this.map, 'idle', () => {
+      let bounds = this.map.getBounds();
+      console.log(bounds)
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+
+    if (prevProps.center !== this.props.center && this.state.map) {
+      this.map.panTo(this.props.center)
+      console.log(this.map.getBounds());
+    }
   }
 
   componentDidMount() {
