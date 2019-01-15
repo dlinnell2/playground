@@ -11,8 +11,8 @@ class Marker extends Component {
         let marker = new google.maps.Marker({
             map: map,
             position: {
-                lat: 29.756846,
-                lng: -95.363444
+                lat: this.props.lat,
+                lng: this.props.lng
             }
         })
     }

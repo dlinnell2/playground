@@ -13,6 +13,18 @@ class MapContainer extends Component {
             lat: 29.756846,
             lng: -95.363444
         },
+        playgrounds:[]
+    }
+
+    searchInBounds = (bounds) => {
+        console.log(bounds);
+        API.findAll()
+        .then( pgs => {
+            this.setState({
+                playgrounds:pgs.data
+            })
+            console.log(this.state.playgrounds)
+        })
     }
 
     componentDidMount() {
@@ -31,7 +43,7 @@ class MapContainer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        
+
     }
 
     render() {
@@ -39,9 +51,14 @@ class MapContainer extends Component {
             <div style={{ height: '100vh' }}>
                 <Map 
                 center={this.state.center}
-                
+                searchInBounds={this.searchInBounds}
                 >
-                    <Marker />
+                    {this.state.playgrounds.map(playground =>(
+                        <Marker 
+                            lat={playground.lat}
+                            lng={playground.lng}
+                        />
+                    ))}
                 </Map>
             </div>
         )

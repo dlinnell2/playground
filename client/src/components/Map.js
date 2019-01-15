@@ -44,7 +44,7 @@ class Map extends Component {
 
     this.google.maps.event.addListener(this.map, 'idle', () => {
       let bounds = this.map.getBounds();
-      console.log(bounds)
+      this.props.searchInBounds(bounds);
     })
   }
 
@@ -52,7 +52,6 @@ class Map extends Component {
 
     if (prevProps.center !== this.props.center && this.state.map) {
       this.map.panTo(this.props.center)
-      console.log(this.map.getBounds());
     }
   }
 
