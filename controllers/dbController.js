@@ -26,8 +26,9 @@ module.exports = {
             .catch((err) => res.status(422).json(err));
     },
 
-    find: function (req, res) {
-        db.Playground.find({})
+    findInBounds: function (req, res) {
+        console.log(req.body)
+        db.Playground.find({lat: {$lte:req.body.north, $gte:req.body.south}, lng: {$lte:req.body.east, $gte:req.body.west}})
         .then(data =>res.json(data))
     }
 };

@@ -6,6 +6,7 @@ const routes = require("./routes");
 const port = process.env.PORT || 5000;
 const controller = require('./controllers/dbController.js')
 
+app.use(express.json());
 app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/playground");

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-    findAll: () => {
-        return axios.get('/api/find')
+    findInBounds: (bounds) => {
+        return axios.post('/api/findbounds', bounds)
     }
 }

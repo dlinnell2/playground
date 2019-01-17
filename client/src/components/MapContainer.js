@@ -17,13 +17,11 @@ class MapContainer extends Component {
     }
 
     searchInBounds = (bounds) => {
-        console.log(bounds);
-        API.findAll()
+        API.findInBounds(bounds)
         .then( pgs => {
             this.setState({
                 playgrounds:pgs.data
             })
-            console.log(this.state.playgrounds)
         })
     }
 
@@ -50,8 +48,8 @@ class MapContainer extends Component {
         return (
             <div style={{ height: '100vh' }}>
                 <Map 
-                center={this.state.center}
-                searchInBounds={this.searchInBounds}
+                    center={this.state.center}
+                    searchInBounds={this.searchInBounds}
                 >
                     {this.state.playgrounds.map(playground =>(
                         <Marker 
